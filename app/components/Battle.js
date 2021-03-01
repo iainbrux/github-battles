@@ -91,8 +91,8 @@ function PlayerPreview({ username, onReset, label }) {
   return (
     <div className="column player">
       <h3 className="player-label">{label}</h3>
-      <div class="row bg-light">
-        <div class="player-info">
+      <div className="row bg-light">
+        <div className="player-info">
           <img
             className="avatar-small"
             src={`https://github.com/${username}.png?size=200`}
