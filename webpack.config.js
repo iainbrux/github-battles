@@ -4,6 +4,9 @@ const { webpack } = require("webpack");
 
 module.exports = {
   entry: "./app/index.js",
+  devServer: {
+    open: true,
+  },
   module: {
     rules: [
       { test: /\.svg$/, use: "svg-inline-loader" },
