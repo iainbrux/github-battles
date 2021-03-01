@@ -1,7 +1,12 @@
 import React from "react";
-import { FaUserFriends, FaFighterJet, FaTrophy, FaTimesCircle } from "react-icons/fa";
+import {
+  FaUserFriends,
+  FaFighterJet,
+  FaTrophy,
+  FaTimesCircle,
+} from "react-icons/fa";
 import PropTypes from "prop-types";
-import Results from './Results'
+import Results from "./Results";
 
 function Instructions() {
   return (
@@ -143,7 +148,19 @@ export default class Battle extends React.Component {
     const { playerOne, playerTwo, battle } = this.state;
 
     if (battle) {
-      return <Results playerOne={playerOne} playerTwo={playerTwo} />
+      return (
+        <Results
+          playerOne={playerOne}
+          playerTwo={playerTwo}
+          onReset={() =>
+            this.setState({
+              playerOne: null,
+              playerTwo: null,
+              battle: false,
+            })
+          }
+        />
+      );
     }
 
     return (
@@ -162,7 +179,7 @@ export default class Battle extends React.Component {
               <PlayerPreview
                 username={playerOne}
                 label="Player One"
-                onReset={() => this.handleReset('playerOne')}
+                onReset={() => this.handleReset("playerOne")}
               />
             )}
             {playerTwo == null ? (
@@ -174,12 +191,15 @@ export default class Battle extends React.Component {
               <PlayerPreview
                 username={playerTwo}
                 label="Player Two"
-                onReset={() => this.handleReset('playerTwo')}
+                onReset={() => this.handleReset("playerTwo")}
               />
             )}
           </div>
           {playerOne && playerTwo && (
-            <button className="btn dark-btn btn-space" onClick={() => this.setState({ battle: true })}>
+            <button
+              className="btn dark-btn btn-space"
+              onClick={() => this.setState({ battle: true })}
+            >
               Battle
             </button>
           )}
@@ -188,3 +208,4 @@ export default class Battle extends React.Component {
     );
   }
 }
+

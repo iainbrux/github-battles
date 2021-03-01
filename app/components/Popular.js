@@ -9,6 +9,7 @@ import {
   FaCode,
 } from "react-icons/fa";
 import Card from "./Card";
+import Loading from './Loading'
 
 function LanguagesNav({ selected, onUpdateLanguage }) {
   const languages = ["All", "JavaScript", "Ruby", "Java", "CSS", "Python"];
@@ -146,7 +147,7 @@ export default class Popular extends React.Component {
           onUpdateLanguage={this.updateLanguage}
         />
 
-        {this.isLoading() && <p>Loading Repositories</p>}
+        {this.isLoading() && <Loading text="Fetching Repositories" />}
 
         {error && <p className="error">{error}</p>}
 
