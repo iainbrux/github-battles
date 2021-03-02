@@ -10,7 +10,8 @@ import {
 } from "react-icons/fa";
 import Card from "./Card";
 import PropTypes from "prop-types";
-import Loading from './Loading'
+import Loading from "./Loading";
+import Tooltip from "./Tooltip";
 
 function ProfileList({ profile }) {
   return (
@@ -21,14 +22,18 @@ function ProfileList({ profile }) {
       </li>
       {profile.location && (
         <li>
-          <FaCompass color="rgb(144, 115, 255)" />
-          {profile.location}
+          <Tooltip text="User's Location">
+            <FaCompass color="rgb(144, 115, 255)" />
+            {profile.location}
+          </Tooltip>
         </li>
       )}
       {profile.company && (
         <li>
-          <FaBriefcase color="rgb(79, 55, 48)" />
-          {profile.company}
+          <Tooltip text="User's Company">
+            <FaBriefcase color="rgb(79, 55, 48)" />
+            {profile.company}
+          </Tooltip>
         </li>
       )}
       <li>
@@ -81,7 +86,7 @@ export default class Results extends React.Component {
     const { winner, loser, error, loading } = this.state;
 
     if (loading) {
-      return <Loading />
+      return <Loading />;
     }
 
     if (error) {
@@ -110,7 +115,9 @@ export default class Results extends React.Component {
             <ProfileList profile={loser.profile} />
           </Card>
         </div>
-        <button onClick={this.props.onReset} className="btn dark-btn btn-space">Reset</button>
+        <button onClick={this.props.onReset} className="btn dark-btn btn-space">
+          Reset
+        </button>
       </React.Fragment>
     );
   }
